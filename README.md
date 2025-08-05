@@ -1,57 +1,86 @@
-# Analyse pollution de l'eau
+# 💧 Analyse simplifiée de la pollution de l'eau
+
+Ce projet Streamlit analyse un ensemble de données mondial sur la qualité de l'eau et la santé publique. Il propose une interface claire et interactive pour visualiser des indicateurs clés environnementaux, sanitaires et socio-économiques.
+
 
 Ce projet analyse les données de pollution de l'eau et les maladies associées à l'aide de Python.
 
 Lien vers la source du Dataset : https://www.kaggle.com/datasets/khushikyad001/water-pollution-and-disease
 
-## Structure du projet
+## 📁 Structure du projet
+
 
 - data/ : Données sources
 - src/ : Scripts Python d'analyse
 - README.md : Présentation du projet
 - requirements.txt : Librairies nécessaires
+- archive/ : première essaie de projet sans streamlit
 
+## 🎯 Objectifs
 
+- Centraliser des données liées à la pollution de l'eau et leur impact.
+- Calculer un indice WQI (Water Quality Index) simplifié.
+- Permettre une interprétation visuelle rapide grâce à des graphiques pertinents.
+- Offrir une navigation accessible aux utilisateurs non techniques.
 
-## ⚙️ Prérequis et installation
+---
 
-1. Cloner le dépôt :  
-   ```bash
-   git clone https://github.com/GuillaumeLeDev/water-pollution-analysis.git
+## 🧰 Technologies utilisées
 
-cd water-pollution-analysis
+- `Python 3.11+`
+- `Streamlit`
+- `pandas`
+- `matplotlib`
+- `seaborn`
+
+---
+
+## 📊 Fonctionnalités de l'application
+
+### ✅ Indicateurs clés affichés
+- Niveau moyen de contaminants (ppm)
+- Taux d'accès à l'eau potable (% population)
+- Taux de mortalité infantile
+- Indice global de qualité de l'eau (WQI)
+
+### 📍 Graphiques interactifs
+- **Qualité moyenne de l’eau par région (WQI)** – avec régions traduites en français
+- **Évolution du niveau de contaminants dans le temps**
+- **Évolution de l'indice WQI dans le temps**
+- **Corrélation entre le PIB par habitant et la pollution**
+- **Répartition des sources d'eau**
+
+---
+
+## 🧠 Calcul du WQI simplifié
+
+L’indice WQI est basé sur les 5 critères OMS les plus pertinents :
+
+| Paramètre                   | Seuil OMS utilisé    |
+|----------------------------|----------------------|
+| pH                         | 6.5 – 8.5            |
+| Turbidité                  | ≤ 5 NTU              |
+| Oxygène dissous            | ≥ 6 mg/L             |
+| Nitrate                    | ≤ 10 mg/L            |
+| Plomb                      | ≤ 10 µg/L            |
+
+Chaque critère est noté sur 100, puis une moyenne est calculée.
+
+---
+
+---
+
+## ▶️ Lancer l’application localement
+
+```bash
 pip install -r requirements.txt
+streamlit run app.py
 
 
-## Execution
+##  À venir (pistes d'amélioration)
+Filtres dynamiques par région ou pays
 
-1.  Lancer le script d’analyse :
-bash
-python src/analyse.py
+Ajout de seuils OMS sur les graphiques
 
-##  Résultats attendus 
-
-    -Aperçu des données ( 5 premières lignes )
-    -Moyenne du contaminant par région
-    -Distribution des tupes de source d'eau
-    -Corrélation contamination vs PIB par habitant
-
-Exemple :
-
-Moyenne du contaminant par région :
-Region
-East     2.34
-North    3.12
-South    1.87
-West     2.45
-Name: Contaminant Level (ppm), dtype: float64
-
-Nombre de pays par type de source d'eau :
-Well      45
-Lake      30
-River     25
-Pond      10
-Name: Water Source Type, dtype: int64
-
-Corrélation contamination vs PIB par habitant : -0.12
+Génération d’un rapport PDF automatique
 
